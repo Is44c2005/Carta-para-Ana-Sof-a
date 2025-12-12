@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Para Sofí ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<style>
+    /* ... (El estilo CSS se mantiene igual que el anterior para no perder el diseño bonito) ... */
+    :root { --primary: #ff8fa3; --secondary: #ffc2d1; --text: #594a4e; --white: #ffffff; --glass: rgba(255, 255, 255, 0.85); }
+    body { margin: 0; font-family: 'Poppins', sans-serif; background: linear-gradient(120deg, #ff9a9e 0%, #fecfef 100%); background-size: 200% 200%; color: var(--text); min-height: 100vh; display: flex; justify-content: center; align-items: center; overflow-x: hidden; animation: gradientBG 10s ease infinite; }
+    @keyframes gradientBG { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+    .container { background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: 20px; padding: 40px; width: 90%; max-width: 500px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center; position: relative; overflow: hidden; transition: height 0.3s ease; }
+    .screen { display: none; animation: fadeIn 0.8s ease forwards; }
+    .active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    h1, h2 { font-family: 'Great Vibes', cursive; color: var(--primary); font-size: 3em; margin-bottom: 10px; margin-top: 0; text-shadow: 2px 2px 0px rgba(255,255,255,0.5); }
+    h2 { font-size: 2.5em; }
+    p { line-height: 1.6; font-size: 1.1em; margin-bottom: 25px; }
+    button.nav-btn { padding: 12px 30px; font-size: 16px; border: none; border-radius: 50px; background: linear-gradient(45deg, var(--primary), #ff6b81); color: white; cursor: pointer; box-shadow: 0 5px 15px rgba(255, 107, 129, 0.4); transition: all 0.3s ease; font-family: 'Poppins', sans-serif; font-weight: 600; letter-spacing: 1px; }
+    button.nav-btn:hover { transform: translateY(-3px) scale(1.05); }
+    .face-parts { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-bottom: 20px; }
+    .part { background: white; padding: 10px 15px; border-radius: 15px; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: all 0.3s; display: flex; align-items: center; gap: 8px; font-size: 0.9em; }
+    .part i { color: var(--primary); }
+    .part:hover { transform: translateY(-5px); background: #fff0f3; }
+    #poem { font-style: italic; color: #d63384; min-height: 60px; font-weight: 500; padding: 10px; border-radius: 10px; background: rgba(255,255,255,0.5); }
+    
+    .songs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-bottom: 20px; }
+    .song { cursor: pointer; background: white; border-radius: 12px; padding: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: transform 0.3s; }
+    .song:hover { transform: scale(1.05); }
+    .song.playing img { animation: pulse 1s infinite; box-shadow: 0 0 15px var(--primary); }
+    @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+    .song img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 8px; margin-bottom: 8px; transition: all 0.3s; }
+    .song p { margin: 0; font-size: 0.85em; font-weight: 600; color: #444; }
+    #songMessage { color: #d63384; font-weight: 600; min-height: 40px; }
+    
+    .things { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+    .thing { background: white; padding: 15px 25px; border-radius: 50px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); font-weight: 600; color: var(--primary); }
+    .heart { position: absolute; color: #ff4757; animation: floatUp 4s linear forwards; opacity: 0; pointer-events: none; z-index: 100; }
+    @keyframes floatUp { 0% { transform: translateY(0) scale(0.5); opacity: 1; } 100% { transform: translateY(-100vh) scale(1.2); opacity: 0; } }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <div class="screen active" id="screen1">
+        <h1>Para Sofí</h1>
+        <div style="font-size: 40px; margin: 20px 0;">💌</div>
+        <p>He creado un pequeño rincón digital, hecho con mucha calma, para mostrarte todo lo que siento por ti.</p>
+        <button class="nav-btn" onclick="next(2); createHearts(10)">Abrir carta <i class="fas fa-heart"></i></button>
+    </div>
+
+    <div class="screen" id="screen2">
+        <h2>Lo que adoro de ti</h2>
+        <p>Toca una parte para descubrir un secreto...</p>
+        <div class="face-parts">
+            <div class="part" onclick="showPoem('ojos'); createHearts(3)"><i class="fas fa-eye"></i> Ojos</div>
+            <div class="part" onclick="showPoem('cejas'); createHearts(3)"><i class="fas fa-pencil-alt"></i> Cejas</div>
+            <div class="part" onclick="showPoem('nariz'); createHearts(3)"><i class="fas fa-compress-arrows-alt"></i> Nariz</div>
+            <div class="part" onclick="showPoem('boca'); createHearts(3)"><i class="fas fa-kiss-wink-heart"></i> Boca</div>
+            <div class="part" onclick="showPoem('cabello'); createHearts(3)"><i class="fas fa-wind"></i> Cabello</div>
+        </div>
+        <p id="poem">Selecciona algo arriba ✨</p>
+        <button class="nav-btn" onclick="next(3)">Siguiente <i class="fas fa-arrow-right"></i></button>
+    </div>
+
+    <div class="screen" id="screen3">
+        <h2>¿Por qué eres única?</h2>
+        <div style="font-size: 40px; margin: 10px 0; color: #ffc107;">✨</div>
+        <p style="text-align: justify; padding: 0 10px;">
+            Eres única porque tu forma de ver el mundo tiene una luz que no encuentro en ningún otro lugar.
+            Porque todo lo que haces, lo haces con un corazón que late con propósito.
+            <br><br>
+            <strong>En tu risa, en tu calma y en tu manera de soñar… hay una belleza que me sostiene.</strong>
+        </p>
+        <button class="nav-btn" onclick="next(4); createHearts(5)">Siguiente <i class="fas fa-arrow-right"></i></button>
+    </div>
+
+    <div class="screen" id="screen4">
+        <h2>Suenan a ti 🎶</h2>
+        <p>Haz clic para escuchar</p>
+        <div class="songs">
+            <div class="song" id="song-nothing" onclick="playSong('nothing'); createHearts(2)">
+                <img  src="nothing.png" alt="Nothing On You">
+                <p>Nothing On You</p>
+            </div>
+            
+            <div class="song" id="song-pudiera" onclick="playSong('pudiera'); createHearts(2)">
+                <img src="pudiera.png" alt="Si Pudiera">
+                <p>Si Pudiera</p>
+            </div>
+            
+            <div class="song" id="song-cuco" onclick="playSong('cuco'); createHearts(2)">
+                <img src="canela.png" alt="Piel Canela">
+                <p>Piel Canela</p>
+            </div>
+            
+            <div class="song" id="song-carino" onclick="playSong('carino'); createHearts(2)">
+                <img src="carino.png" alt="Cariño">
+                <p>Cariño</p>
+            </div>
+        </div>
+        <p id="songMessage">♫ Toca una canción ♫</p>
+        <button onclick="stopMusic()" style="background:transparent; border:1px solid #aaa; color:#555; padding:5px 10px; border-radius:20px; font-size:0.8em; margin-bottom:15px; cursor:pointer;">Detener música</button>
+        <br>
+        <button class="nav-btn" onclick="next(5)">Siguiente <i class="fas fa-arrow-right"></i></button>
+    </div>
+
+    <div class="screen" id="screen5">
+        <h2>Tu nombre está en...</h2>
+        <div class="things">
+            <div class="thing"><i class="fas fa-sun"></i> Atardeceres</div>
+            <div class="thing"><i class="fas fa-dog"></i> Perritos</div>
+            <div class="thing"><i class="fas fa-spa"></i> Flores</div>
+            <div class="thing"><i class="fas fa-ice-cream"></i> Postres</div>
+        </div>
+        <br>
+        <p>En cada cosa bonita que veo, te encuentro a ti.</p>
+        <button class="nav-btn" onclick="next(6); shower()">Ver final <i class="fas fa-gift"></i></button>
+    </div>
+
+    <div class="screen" id="screen6">
+        <h2>Para cerrar...</h2>
+        <div style="font-size: 50px; margin-bottom: 20px;">❤️</div>
+        <p style="font-size: 1.2em; font-weight: bold;">
+            Te amo más de lo que las palabras pueden sostener, Sofí. 
+        </p>
+        <p>Y si el mundo me diera mil vidas, en cada una volvería a elegirte.</p>
+        <button class="nav-btn" onclick="next(1); stopMusic()">Volver al inicio ↺</button>
+    </div>
+</div>
+
+<script>
+// --- CONFIGURACIÓN DE MÚSICA (ACTUALIZADA) ---
+const musicFiles = {
+    nothing: "nothing.mp3",
+    pudiera: "pudiera.mp3",  // Nuevo archivo para Manuel Medrano
+    cuco:    "pielcanela.mp3",
+    carino:  "carino.mp3"    // Nuevo archivo para The Marias
+};
+
+let currentAudio = null;
+
+function next(n) {
+    const current = document.querySelector('.active');
+    current.classList.remove('active');
+    setTimeout(() => { document.getElementById('screen' + n).classList.add('active'); }, 100);
+}
+
+function showPoem(part) {
+    const poems = {
+        ojos: "Tus ojos… dos refugios donde todo el ruido del mundo se vuelve silencio.",
+        cejas: "Tus cejas dibujan la intención de tu alma, suaves, exactas, hermosas.",
+        nariz: "Tu nariz, tan tuya, tan perfecta, un punto dulce en tu armonía.",
+        boca: "Tu boca… donde guardas risas que podrían sanar a cualquiera.",
+        cabello: "Tu cabello cae como una historia que siempre quiero seguir leyendo."
+    };
+    const element = document.getElementById('poem');
+    element.style.opacity = 0;
+    setTimeout(() => { element.innerText = poems[part]; element.style.opacity = 1; }, 200);
+}
+
+function playSong(songKey) {
+    // MENSAJES ACTUALIZADOS
+    const messages = {
+        nothing: "Porque contigo siento que no hay nadie más, solo tú y lo que somos.",
+        pudiera: "Porque si pudiera volar, lo haría directo hacia ti. Todo lo haría por ti.",
+        cuco: "Porque tu tono es miel y tu forma de querer es cálida.",
+        carino: "Eres mi sol y mi calma. Simplemente, te quiero ver, cariño."
+    };
+    
+    const msgDiv = document.getElementById('songMessage');
+    msgDiv.innerText = messages[songKey];
+
+    if (currentAudio) { currentAudio.pause(); currentAudio.currentTime = 0; }
+    document.querySelectorAll('.song').forEach(el => el.classList.remove('playing'));
+
+    const file = musicFiles[songKey];
+    if(file) {
+        currentAudio = new Audio(file);
+        currentAudio.play().then(() => {
+            document.getElementById('song-' + songKey).classList.add('playing');
+        }).catch(error => {
+            alert("Falta el archivo: " + file + ". \nPonlo en la carpeta con el HTML.");
+        });
+        currentAudio.onended = function() {
+            document.getElementById('song-' + songKey).classList.remove('playing');
+        };
+    }
+}
+
+function stopMusic() {
+    if (currentAudio) {
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+        document.querySelectorAll('.song').forEach(el => el.classList.remove('playing'));
+    }
+}
+
+function createHearts(amount) {
+    for (let i = 0; i < amount; i++) {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.innerHTML = '❤️';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+        heart.style.animationDuration = Math.random() * 2 + 3 + 's';
+        document.body.appendChild(heart);
+        setTimeout(() => { heart.remove(); }, 5000);
+    }
+}
+
+function shower() {
+    setInterval(() => { createHearts(2); }, 200);
+    setTimeout(() => { for(let i=0; i<9999; i++) window.clearInterval(i); }, 5000);
+}
+</script>
+
+</body>
+</html>
