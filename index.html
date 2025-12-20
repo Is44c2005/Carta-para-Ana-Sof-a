@@ -225,19 +225,19 @@
     <div class="screen active" id="screen1">
         <h1>Para Sofí</h1>
         <div style="font-size: 40px; margin: 20px 0;">💌</div>
-        <p>Quise preparar algo especial, hecho con mucho amor, y mostrarte todo lo que siento por ti.</p>
-        <button class="nav-btn" onclick="next(2); createHearts(10)">Abrir carta <i class="fas fa-heart"></i></button>
+        <p>Quise preparar algo especial, hecho con mucho amor, para mostrarte todo lo que siento por ti.</p>
+        <button class="nav-btn" onclick="next(2); createHearts(15)">Abrir carta <i class="fas fa-heart"></i></button>
     </div>
 
     <div class="screen" id="screen2">
         <h2>Lo que adoro de ti</h2>
         <p>Toca una parte para descubrir un secreto...</p>
         <div class="face-parts">
-            <div class="part" onclick="showPoem('ojos'); createHearts(3)"><i class="fas fa-eye"></i> Ojos</div>
-            <div class="part" onclick="showPoem('cejas'); createHearts(3)"><i class="fas fa-pencil-alt"></i> Cejas</div>
-            <div class="part" onclick="showPoem('nariz'); createHearts(3)"><i class="fas fa-compress-arrows-alt"></i> Nariz</div>
-            <div class="part" onclick="showPoem('boca'); createHearts(3)"><i class="fas fa-kiss-wink-heart"></i> Boca</div>
-            <div class="part" onclick="showPoem('cabello'); createHearts(3)"><i class="fas fa-wind"></i> Cabello</div>
+            <div class="part" onclick="showPoem('ojos'); createHearts(10)"><i class="fas fa-eye"></i> Ojos</div>
+            <div class="part" onclick="showPoem('cejas'); createHearts(10)"><i class="fas fa-pencil-alt"></i> Cejas</div>
+            <div class="part" onclick="showPoem('nariz'); createHearts(10)"><i class="fas fa-compress-arrows-alt"></i> Nariz</div>
+            <div class="part" onclick="showPoem('boca'); createHearts(10)"><i class="fas fa-kiss-wink-heart"></i> Boca</div>
+            <div class="part" onclick="showPoem('cabello'); createHearts(10)"><i class="fas fa-wind"></i> Cabello</div>
         </div>
         <p id="poem">Selecciona algo arriba ✨</p>
         <button class="nav-btn" onclick="next(3)">Siguiente <i class="fas fa-arrow-right"></i></button>
@@ -296,7 +296,7 @@
             
             <div class="song" id="song-troye" onclick="playSong('troye'); createHearts(10)">
                 <img src="troye.png" alt="Troye Sivan">
-                <p>One of your girls</p>
+                <p>One Of Your Girls</p>
             </div>
             
             <div class="song" id="song-miloj" onclick="playSong('miloj'); createHearts(10)">
@@ -317,7 +317,7 @@
 
     <div class="screen" id="screen5">
         <h2>Tu nombre está en...</h2>
-        <p style="font-size: 0.9em; margin-bottom: 20px;">(Dale click a cada uno 👇)</p>
+        <p style="font-size: 0.9em; margin-bottom: 20px;">(Dale clic a cada uno 👇)</p>
         <div class="things">
             <div class="thing" onclick="openModal('atardeceres')"><i class="fas fa-sun"></i> Atardeceres</div>
             <div class="thing" onclick="openModal('perritos')"><i class="fas fa-dog"></i> Perritos</div>
@@ -350,7 +350,7 @@
         <h2>Mi Regalo para Ti</h2>
         <div style="font-size: 50px; margin: 15px 0;">🎀</div>
         <p>
-            Eligo caminar contigo,
+            Elijo caminar contigo,
             celebrar lo simple
             y construir algo que no se agote en un momento. 
 
@@ -359,7 +359,7 @@
             y un amor genuino y leal.
         </p>
         <p style="font-size: 1.1em; font-weight: bold; color: #594a4e;">
-            "Eligo amarte Ana Sofía."
+            "Elijo amarte Ana Sofía."
         </p>
         <button class="nav-btn" onclick="next(9)">¡El Gran Final! <i class="fas fa-heart"></i></button>
     </div>
@@ -381,7 +381,7 @@
 // 1. CONFIGURACIÓN DE MÚSICA
 const musicFiles = {
     nothing:    "nothing.mp3",
-    oneonly:    "oneonly.mp3", // Mon Laferte
+    oneonly:    "oneonly.mp3", 
     cuco:       "pielcanela.mp3",
     carino:     "carino.mp3",
     // Nuevas canciones
